@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Knockout List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    
+    <script type='text/javascript' src='knockout-3.4.2.js'></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Knockout List</h1>
+    <!-- <p data-bind="text: list[0].item"></p> -->
+<button data-bind="click: addItem">Add New Item</button>
+    <div class="container" data-bind="foreach: list">
+        <div class="item" data-bind="visible: !complete()">
+            <span class="heading" data-bind="text: item, visible: display, click: $root.edit"></span>
+            <span data-bind="visible: edit"><input class="heading" data-bind="value: item, event: { blur: $root.onBlurEvent }" /></span>
+            <button class="heading" data-bind="click: $root.complete">Complete</button>
+            <!-- <p>Complete: <span data-bind="text: complete"></span></p> -->
+        </div>
+    
+    </div>
+</body>
+</html>
