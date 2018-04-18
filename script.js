@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
         'eat plenty of tamales'
     ];
 
-    function Item(item, complete) {
+    function Item(item, complete, edit, display) {
         var self = this;
         self.item = ko.observable(item);
         self.complete = ko.observable(complete);
-        self.edit = ko.observable(false);
-        self.display = ko.observable(true);
+        self.edit = ko.observable(edit);
+        self.display = ko.observable(display);
 
     }
 
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         self.initializeList = function (items) {
             items.forEach((item) => {
-                var newItem = new Item(item, false);
+                var newItem = new Item(item, false, false, true);
                 self.list.push(newItem);
             });
         }
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(self.list);
 
         self.addItem = function () {
-            var newItem = new Item('', false);
+            var newItem = new Item('New item', false, true, false);
             self.list.push(newItem);
             console.log('new item:');
             console.log(newItem);
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         self.complete = function (selectedItem) {
             //console.log(self.list);
-            var newItem = new Item(selectedItem.item, true);
+            var newItem = new Item(selectedItem.item, true, false, true);
             self.list.replace(selectedItem, newItem);
 
             // self.list.forEach((item, i) => {
